@@ -1,26 +1,14 @@
 {
-  "builds": [
-    {
-      "src": "api/data.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "build/index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "build/static/**",
-      "use": "@vercel/static"
-    }
-  ],
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/api/data.js"
     },
     {
-      "src": "/static/(.*)",
-      "dest": "/build/static/$1"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
