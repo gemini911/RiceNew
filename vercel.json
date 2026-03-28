@@ -3,6 +3,14 @@
     {
       "src": "api/data.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "build/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "build/static/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
