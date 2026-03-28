@@ -1,0 +1,154 @@
+/* ============================================
+   RiceNew - 米粒奖励系统
+   设计风格：温暖可爱，适合亲子使用
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+  /* 主色调 - 温暖的米粒金 */
+  --color-rice: #F5A623;
+  --color-rice-light: #FFD180;
+  --color-rice-dark: #E89520;
+
+  /* 辅助色 - 薄荷绿 */
+  --color-mint: #7DCBAA;
+  --color-mint-light: #A8E6CF;
+  --color-mint-dark: #5BB98B;
+
+  /* 强调色 - 珊瑚粉 */
+  --color-coral: #FF8A80;
+  --color-coral-light: #FFAB91;
+
+  /* 中性色 - 温暖灰棕 */
+  --color-cream: #FFF8F0;
+  --color-warm-white: #FFFCF7;
+  --color-warm-gray: #8B7355;
+  --color-light-brown: #D4C4B0;
+
+  /* 背景色 */
+  --bg-primary: #FFF8F0;
+  --bg-card: #FFFFFF;
+  --bg-secondary: #FFF0E6;
+
+  /* 文字色 */
+  --text-primary: #5D4E37;
+  --text-secondary: #8B7355;
+  --text-light: #B8A590;
+
+  /* 阴影 - 柔和温暖 */
+  --shadow-sm: 0 2px 8px rgba(139, 115, 85, 0.08);
+  --shadow-md: 0 4px 16px rgba(139, 115, 85, 0.12);
+  --shadow-lg: 0 8px 32px rgba(139, 115, 85, 0.16);
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* 字体 */
+  --font-display: 'Nunito', -apple-system, sans-serif;
+  --font-body: 'Quicksand', -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+#root {
+  height: 100vh;
+}
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   App Container
+   ============================================ */
+.app-container {
+  max-width: 420px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================
+   Interactive States
+   ============================================ */
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-light-brown);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-gray);
+}

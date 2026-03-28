@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/api/data/(.*)", "destination": "/api/data" },
+    { "source": "/((?!api).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    { "source": "/", "headers": [{ "key": "Cache-Control", "value": "no-store" }] },
+    { "source": "/index.html", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
+  ]
+}

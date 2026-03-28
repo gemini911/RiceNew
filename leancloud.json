@@ -1,0 +1,12 @@
+{
+  "env": {
+    "LEANCLOUD_APP_ID": "iqseIsVajhxxl3v6x9O1upkO-gzGzoHsz",
+    "LEANCLOUD_APP_MASTER_KEY": "WrpnPZFUFALs8OUgzwjzEnZr",
+    "LEANCLOUD_SERVER_URL": "https://iqseisva.lc-cn-n1-shared.com"
+  },
+  "functions": {
+    "api/data": {
+      "includeFiles": "api/**"
+    }
+  }
+}

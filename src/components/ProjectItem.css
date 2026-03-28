@@ -1,0 +1,139 @@
+/* ============================================
+   ProjectItem - 项目卡片
+   ============================================ */
+.project-item-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.project-item-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-mint-light);
+}
+
+.project-item-card:active {
+  transform: scale(0.98);
+}
+
+.project-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.project-icon-container {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--color-cream) 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8em;
+  flex-shrink: 0;
+}
+
+.project-details {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.project-name {
+  font-family: var(--font-display);
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 一周完成状态圆点 */
+.completion-status {
+  display: flex;
+  gap: 4px;
+}
+
+.completion-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.65em;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.completion-circle.completed-today {
+  background: linear-gradient(135deg, var(--color-mint) 0%, var(--color-mint-dark) 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(125, 203, 170, 0.4);
+}
+
+.completion-circle.pending-today {
+  background: var(--bg-secondary);
+  border: 2px dashed var(--color-light-brown);
+}
+
+.completion-circle.completed-historical {
+  background: var(--color-mint-light);
+  color: white;
+}
+
+.completion-circle.pending-historical {
+  background: #EDE8E0;
+}
+
+.completion-circle.pending-future {
+  background: #F5F2EE;
+}
+
+/* 完成按钮 */
+.complete-button {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-mint) 0%, var(--color-mint-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.2em;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.complete-button:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-md);
+}
+
+.complete-button:active {
+  transform: scale(0.92);
+}
+
+.complete-button:disabled {
+  background: linear-gradient(135deg, #E0D8CC 0%, #D4C8BC 100%);
+  color: var(--text-light);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.complete-button:disabled:hover {
+  transform: none;
+}

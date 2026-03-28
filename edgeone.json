@@ -1,0 +1,26 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output": "build"
+  },
+  "functions": {
+    "api/data": {
+      "runtime": "nodejs16",
+      "handler": "api/data.handler"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/data/(.*)",
+      "dest": "/api/data"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "https://ljkqxfzeuxlztasxjiwd.supabase.co",
+    "SUPABASE_ANON_KEY": "sb_publishable_mNpQtaQh_3EBVTW0ZwasXg_Ps-f5kKO"
+  }
+}

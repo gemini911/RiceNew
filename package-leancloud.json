@@ -1,0 +1,15 @@
+{
+  "name": "rice-app-backend",
+  "version": "1.0.0",
+  "description": "Rice App Backend API for LeanCloud",
+  "main": "api/data.js",
+  "scripts": {
+    "start": "node api/data.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,13 @@
+.app-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-bottom: 60px; /* Space for the fixed bottom navigation */
+}
+
+.main-content {
+  padding: 0;
+}
