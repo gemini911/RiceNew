@@ -1,10 +1,34 @@
 {
-  "rewrites": [
-    { "source": "/api/data/(.*)", "destination": "/api/data" },
-    { "source": "/((?!api).*)", "destination": "/index.html" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/data.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/data/(.*)",
+      "dest": "/api/data.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ],
   "headers": [
-    { "source": "/", "headers": [{ "key": "Cache-Control", "value": "no-store" }] },
-    { "source": "/index.html", "headers": [{ "key": "Cache-Control", "value": "no-store" }] }
+    {
+      "source": "/",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    },
+    {
+      "source": "/index.html",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    }
   ]
 }
