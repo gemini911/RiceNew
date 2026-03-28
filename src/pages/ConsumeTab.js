@@ -26,11 +26,6 @@ const ConsumeTab = () => {
     setShowCalendarModal(true);
   };
 
-  const handleEditConsumable = (consumable) => {
-    setSelectedConsumable(consumable);
-    setShowEditForm(true);
-  };
-
   const handleSaveConsumable = async (id, updatedFields) => {
     const result = await updateConsumable(id, updatedFields);
     if (result) {
