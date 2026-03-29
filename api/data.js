@@ -284,9 +284,9 @@ router.post('/consumables/:id/buy', async (req, res) => {
 });
 
 // 取消购买/退还米粒
-router.delete('/consumables/:id/refund', async (req, res) => {
+const handleRefundConsumable = async (req, res) => {
   const { id } = req.params;
-  const { date } = req.body;
+  const { date } = req.body || {};
 
   try {
     if (!supabase) throw new Error('No Supabase client available');
@@ -330,7 +330,10 @@ router.delete('/consumables/:id/refund', async (req, res) => {
     console.error('Error refunding consumable:', error.message);
     res.status(500).json({ message: error.message });
   }
-});
+};
+
+router.delete('/consumables/:id/refund', handleRefundConsumable);
+router.post('/consumables/:id/refund', handleRefundConsumable);
 
 router.put('/projects/:id', async (req, res) => {
   const { id } = req.params;

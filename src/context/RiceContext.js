@@ -568,14 +568,31 @@ export const RiceProvider = ({ children }) => {
     try {
       while (retries <= maxRetries) {
         try {
-          const data = await fetchWithTimeout(
-            `${API_BASE}/api/data/consumables/${consumableId}/refund`,
-            {
-              method: "DELETE",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ date }),
+          let data;
+          try {
+            data = await fetchWithTimeout(
+              `${API_BASE}/api/data/consumables/${consumableId}/refund`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ date }),
+              }
+            );
+          } catch (error) {
+            const message = String(error?.message || "");
+            if (!message.includes("404") && !message.includes("405")) {
+              throw error;
             }
-          );
+
+            data = await fetchWithTimeout(
+              `${API_BASE}/api/data/consumables/${consumableId}/refund`,
+              {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ date }),
+              }
+            );
+          }
 
           // 如果后端返回了最新的分数且与当前分数不同，则同步
           if (

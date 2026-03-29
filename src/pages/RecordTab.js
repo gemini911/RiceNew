@@ -10,6 +10,7 @@ const RecordTab = () => {
   // 构建时间轴数据
   const timelineData = useMemo(() => {
     const dateMap = new Map();
+    const seenPurchaseKeys = new Set();
 
     // 收集所有项目完成记录（获得米粒）
     projects.forEach(project => {
@@ -33,6 +34,9 @@ const RecordTab = () => {
     purchaseRecords.forEach(record => {
       const date = record.purchaseDate ? record.purchaseDate.slice(0, 10) : record.purchaseDate;
       if (!date) return;
+      const purchaseKey = `${record.id || ''}-${record.consumableId || ''}-${date}-${record.name || ''}`;
+      if (seenPurchaseKeys.has(purchaseKey)) return;
+      seenPurchaseKeys.add(purchaseKey);
       if (!dateMap.has(date)) {
         dateMap.set(date, { date, earnings: [], consumptions: [] });
       }
