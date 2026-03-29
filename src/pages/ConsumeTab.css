@@ -48,6 +48,7 @@
   height: 48px;
   background: linear-gradient(135deg, var(--color-mint) 0%, var(--color-mint-dark) 100%);
   border: none;
+  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -68,7 +69,6 @@
 .add-consumable-button svg {
   width: 24px;
   height: 24px;
-  fill: white;
 }
 
 .consumables-list {
