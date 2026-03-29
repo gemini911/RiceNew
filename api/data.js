@@ -27,6 +27,21 @@ if (supabaseUrl && supabaseAnonKey) {
 app.use(cors());
 app.use(express.json());
 
+// Vercel rewrite fallback: map /api/data/:path* -> /api/data?path=:path*
+app.use((req, _res, next) => {
+  const rewrittenPath = req.query && req.query.path;
+  if (rewrittenPath) {
+    const normalizedPath = Array.isArray(rewrittenPath)
+      ? rewrittenPath.join('/')
+      : rewrittenPath;
+    const cleanPath = String(normalizedPath).replace(/^\/+/, '');
+    if (cleanPath) {
+      req.url = `/${cleanPath}`;
+    }
+  }
+  next();
+});
+
 // 记录请求日志
 app.use((req, res, next) => {
   console.log(`API Request: ${req.method} ${req.url} `);
