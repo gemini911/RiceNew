@@ -1,3 +1,3 @@
-import handler from '../data.js'
+const handler = require('../data.js');
 
-export default handler
+module.exports = handler;
