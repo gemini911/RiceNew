@@ -718,17 +718,35 @@ export const RiceProvider = ({ children }) => {
       const originalConsumables = consumables;
       setConsumables(prev => prev.filter(c => c.id !== id));
 
-      const response = await fetch(`${API_BASE}/api/data/consumables/${id}`, {
-        method: "DELETE",
+      let response = await fetch(`${API_BASE}/api/data/consumables/${id}/delete`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
+      if (response.status === 404 || response.status === 405) {
+        response = await fetch(`${API_BASE}/api/data/consumables/${id}`, {
+          method: "DELETE",
+        });
+      }
 
       if (response.ok) {
         return true;
       } else {
         // 后端删除失败，回滚
         setConsumables(originalConsumables);
-        const data = await response.json();
-        alert(data.message || "删除失败");
+        const responseText = await response.text();
+        let message = "删除失败";
+        try {
+          const data = JSON.parse(responseText);
+          message = data.message || message;
+        } catch {
+          if (responseText) {
+            message = responseText;
+          }
+        }
+        alert(message);
         return false;
       }
     } catch (error) {
@@ -864,13 +882,23 @@ export const RiceProvider = ({ children }) => {
   const deleteProject = async (id, clearPoints = false) => {
     try {
       updateIsRequesting(true);
-      const response = await fetch(`${API_BASE}/api/data/projects/${id}`, {
-        method: "DELETE",
+      let response = await fetch(`${API_BASE}/api/data/projects/${id}/delete`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ clearPoints }),
       });
+
+      if (response.status === 404 || response.status === 405) {
+        response = await fetch(`${API_BASE}/api/data/projects/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ clearPoints }),
+        });
+      }
 
       if (response.ok) {
         setProjects((prev) => prev.filter((p) => p.id !== id));
@@ -882,8 +910,17 @@ export const RiceProvider = ({ children }) => {
         }
         return true;
       } else {
-        const data = await response.json();
-        alert(data.message || "删除失败");
+        const responseText = await response.text();
+        let message = "删除失败";
+        try {
+          const data = JSON.parse(responseText);
+          message = data.message || message;
+        } catch {
+          if (responseText) {
+            message = responseText;
+          }
+        }
+        alert(message);
         return false;
       }
     } catch (error) {

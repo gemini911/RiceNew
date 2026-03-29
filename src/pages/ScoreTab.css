@@ -50,27 +50,11 @@
   border: none;
   color: white;
   border-radius: 50%;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: var(--shadow-md);
   transition: all 0.2s ease;
-}
-
-.add-project-button::before,
-.add-project-button::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-  border-radius: 999px;
-}
-
-.add-project-button::before {
-  width: 18px;
-  height: 3px;
-}
-
-.add-project-button::after {
-  width: 3px;
-  height: 18px;
 }
 
 .add-project-button:hover {
@@ -82,8 +66,12 @@
   transform: scale(0.95);
 }
 
-.add-project-button svg {
-  display: none;
+.add-button-plus {
+  color: currentColor;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  transform: translateY(-2px);
 }
 
 .project-list {

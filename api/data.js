@@ -343,10 +343,9 @@ router.put('/consumables/:id', async (req, res) => {
   }
 });
 
-router.delete('/projects/:id', async (req, res) => {
+const handleDeleteProject = async (req, res) => {
   const { id } = req.params;
-  const { clearPoints } = req.body;
-
+  const { clearPoints } = req.body || {};
   try {
     if (!supabase) throw new Error('No Supabase client available');
 
@@ -379,9 +378,15 @@ router.delete('/projects/:id', async (req, res) => {
     console.error('Error deleting project:', error.message);
     res.status(500).json({ message: error.message });
   }
+};
+
+router.delete('/projects/:id', handleDeleteProject);
+
+router.post('/projects/:id/delete', async (req, res) => {
+  return handleDeleteProject(req, res);
 });
 
-router.delete('/consumables/:id', async (req, res) => {
+const handleDeleteConsumable = async (req, res) => {
   const { id } = req.params;
   try {
     if (!supabase) throw new Error('No Supabase client available');
@@ -391,6 +396,12 @@ router.delete('/consumables/:id', async (req, res) => {
     console.error('Error deleting consumable:', error.message);
     res.status(500).json({ message: error.message });
   }
+};
+
+router.delete('/consumables/:id', handleDeleteConsumable);
+
+router.post('/consumables/:id/delete', async (req, res) => {
+  return handleDeleteConsumable(req, res);
 });
 
 router.get('/health', async (req, res) => {
