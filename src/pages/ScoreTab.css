@@ -48,12 +48,29 @@
   height: 48px;
   background: linear-gradient(135deg, var(--color-mint) 0%, var(--color-mint-dark) 100%);
   border: none;
+  color: white;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   box-shadow: var(--shadow-md);
   transition: all 0.2s ease;
+}
+
+.add-project-button::before,
+.add-project-button::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.add-project-button::before {
+  width: 18px;
+  height: 3px;
+}
+
+.add-project-button::after {
+  width: 3px;
+  height: 18px;
 }
 
 .add-project-button:hover {
@@ -66,9 +83,7 @@
 }
 
 .add-project-button svg {
-  width: 24px;
-  height: 24px;
-  fill: white;
+  display: none;
 }
 
 .project-list {

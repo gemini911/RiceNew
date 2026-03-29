@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useRice } from '../context/RiceContext';
+import { PROJECT_ICONS } from '../constants/icons';
 import './EditProject.css';
 
 const EditProject = () => {
@@ -36,8 +37,6 @@ const EditProject = () => {
     }
   };
 
-  const availableIcons = ['⭐', '💪', '📚', '🏃‍♀️', '🧘‍♀️', '🍎', '💰'];
-
   if (!project) {
     return <div style={{ padding: 20 }}>项目不存在或尚未加载</div>;
   }
@@ -49,7 +48,7 @@ const EditProject = () => {
         <div className="form-group">
           <label>图标:</label>
           <div className="icon-selection">
-            {availableIcons.map((i) => (
+            {PROJECT_ICONS.map((i) => (
               <span
                 key={i}
                 className={`icon-option ${icon === i ? 'selected' : ''}`}

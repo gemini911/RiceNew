@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRice } from '../context/RiceContext';
+import { PROJECT_ICONS } from '../constants/icons';
 import './AddProject.css';
 
 const AddProject = ({ onClose, projectToEdit }) => {
@@ -27,8 +28,6 @@ const AddProject = ({ onClose, projectToEdit }) => {
     }
   };
 
-  const availableIcons = ['⭐', '💪', '📚', '🏃‍♀️', '🧘‍♀️', '🍎', '💰'];
-
   return (
     <div className="add-project-modal-overlay" onClick={onClose}>
       <div className="add-project-modal" onClick={(e) => e.stopPropagation()}>
@@ -40,7 +39,7 @@ const AddProject = ({ onClose, projectToEdit }) => {
           <div className="form-group">
             <label>图标:</label>
             <div className="icon-selection">
-              {availableIcons.map((i) => (
+              {PROJECT_ICONS.map((i) => (
                 <span
                   key={i}
                   className={`icon-option ${icon === i ? 'selected' : ''}`}

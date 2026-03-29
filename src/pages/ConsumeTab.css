@@ -50,11 +50,27 @@
   border: none;
   color: white;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   box-shadow: var(--shadow-md);
   transition: all 0.2s ease;
+}
+
+.add-consumable-button::before,
+.add-consumable-button::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.add-consumable-button::before {
+  width: 18px;
+  height: 3px;
+}
+
+.add-consumable-button::after {
+  width: 3px;
+  height: 18px;
 }
 
 .add-consumable-button:hover {
@@ -67,8 +83,7 @@
 }
 
 .add-consumable-button svg {
-  width: 24px;
-  height: 24px;
+  display: none;
 }
 
 .consumables-list {
